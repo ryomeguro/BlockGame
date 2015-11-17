@@ -4,7 +4,6 @@ using System.Collections;
 public class BallScript : MonoBehaviour {
 
 	public GameObject itemB,itemC,itemF,itemG,itemH,itemL,itemM,itemS;
-
 	GameObject[] items;
 
 	Rigidbody rb;
@@ -41,27 +40,36 @@ public class BallScript : MonoBehaviour {
 
 	void OnCollisionEnter(Collision c){
 		if (c.gameObject.tag == "Block") {
-			float p =Random.value*100;
-			//Debug.Log (p);
-			float ip = 0;
-			if (p < 3) {
-				ItemAppear (itemB, c.transform);
-			} else if (3<= p && p < 6) {
-				ItemAppear (itemC, c.transform);
-			} else if (6 <= p && p < 10) {
-				ItemAppear (itemF, c.transform);
-			} else if (10 <= p && p < 13) {
-				ItemAppear (itemG, c.transform);
-			} else if (13 <= p && p < 19) {
-				ItemAppear (itemL, c.transform);
-			} else if (19 <= p && p < 23) {
-				ItemAppear (itemM, c.transform);
-			} else if (23 <= p && p < 29) {
-				ItemAppear (itemS, c.transform);
-			} else if (29 <= p && p < 29.5f) {
-				ItemAppear (itemH, c.transform);
-			} else {
-				ItemAppear(itemC,c.transform);
+			if (c.gameObject.GetComponent<BlockScript> ().hp <= 1) {
+				float p = Random.value * 100;
+				float ip = 0;
+				if (p < 3) {
+					Debug.Log ("B");
+					ItemAppear (itemB, c.transform);
+				} else if (3 <= p && p < 6) {
+					Debug.Log ("C");
+					ItemAppear (itemC, c.transform);
+				} else if (6 <= p && p < 10) {
+					Debug.Log ("F");
+					ItemAppear (itemF, c.transform);
+				} else if (10 <= p && p < 13) {
+					Debug.Log ("G");
+					ItemAppear (itemG, c.transform);
+				} else if (13 <= p && p < 19) {
+					Debug.Log ("L");
+					ItemAppear (itemL, c.transform);
+				} else if (19 <= p && p < 23) {
+					Debug.Log ("M");
+					ItemAppear (itemM, c.transform);
+				} else if (23 <= p && p < 29) {
+					Debug.Log ("S");
+					ItemAppear (itemS, c.transform);
+				} else if (29 <= p && p < 29.5f) {
+					Debug.Log ("H");
+					ItemAppear (itemH, c.transform);
+				} else {
+					//ItemAppear (itemC, c.transform);
+				}
 			}
 		}
 	}
